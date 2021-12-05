@@ -25,7 +25,7 @@ SECRET_KEY = '52$5ujr925j_8)+c4+yhwik_+vq6e13#fxi5**_$rv80pn3(sf'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['django-test4-env.eba-k7repcss.us-east-1.elasticbeanstalk.com']
+ALLOWED_HOSTS = ['greatkart-course-env.eba-s8z6jeja.us-east-1.elasticbeanstalk.com']
 
 
 # Application definition
