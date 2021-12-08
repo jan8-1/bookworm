@@ -87,11 +87,13 @@ if 'RDS_DB_NAME' in os.environ:
     DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.postgresql',
-            'NAME': os.environ['RDS_DB_NAME'],
-            'USER': os.environ['RDS_USERNAME'],
-            'PASSWORD': os.environ['RDS_PASSWORD'],
-            'HOST': os.environ['RDS_HOSTNAME'],
-            'PORT': os.environ['RDS_PORT'],
+            'NAME': 'ebdb',
+            'USER': 'greatkartuser',
+            'PASSWORD': 'asdfghjkl123',
+            # 'USER': 'janit',
+            # 'PASSWORD': 'janit123',
+            'HOST': 'aa1a1lozmtzk6n8.cl0pbpduwcnq.us-east-1.rds.amazonaws.com',
+            'PORT': 5432,
         }
     }
 else:
