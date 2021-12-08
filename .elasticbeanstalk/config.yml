@@ -6,10 +6,10 @@ branch-defaults:
     environment: greatkart-course-env
     group_suffix: null
 global:
-  application_name: greatkart-course
+  application_name: bookworm
   branch: null
   default_ec2_keyname: my-key
-  default_platform: Python 3.7
+  default_platform: Python 3.6
   default_region: us-east-1
   include_git_submodules: true
   instance_profile: null
