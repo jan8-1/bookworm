@@ -171,6 +171,23 @@ STATICFILES_DIRS = [
     'greatkart/static',
 ]
 
+# AWS_ACCESS_KEY_ID = 'ASIAVK2NRDKZUWLNG653'
+# AWS_SECRET_ACCESS_KEY = 'ZHC9bbNoVSZiNTmWQVGDl8Zk8iBWjVPUUyWaS1am'
+# AWS_STORAGE_BUCKET_NAME = 'bookworm-s3'
+# AWS_S3_CUSTOM_DOMAIN = '%s.s3.amazonaws.com' % AWS_STORAGE_BUCKET_NAME
+# AWS_S3_OBJECT_PARAMETERS = {
+#     'CacheControl': 'max-age=86400',
+# }
+# AWS_S3_FILE_OVERWRITE = False
+# AWS_DEFAULT_ACL = 'public-read'
+# AWS_LOCATION = 'static'
+
+# STATICFILES_DIRS = [
+#     'greatkart/static',
+# ]
+# STATIC_URL = 'https://%s/%s/' % (AWS_S3_CUSTOM_DOMAIN, AWS_LOCATION)
+# STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+
 # media files configuration
 MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR /'media'

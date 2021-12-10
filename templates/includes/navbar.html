@@ -41,7 +41,7 @@
   <div class="col-lg col-sm col-md col-6 flex-grow-0">
     <div class="category-wrap dropdown d-inline-block float-right">
       <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
-        <i class="fa fa-bars"></i> All category
+        <i class="fa fa-bars"></i> Shop By Category
       </button>
       <div class="dropdown-menu">
         <a class="dropdown-item" href="{% url 'store' %}">All Products </a>
@@ -72,14 +72,14 @@
             <small class="title text-muted">Welcome guest!</small>
             <div>
               <a href="{% url 'login' %}">Sign in</a> <span class="dark-transp"> | </span>
-              <a href="{% url 'register' %}"> Register</a>
+              <a href="{% url 'register' %}"> Join</a>
             </div>
           </div>
           {% else %}
           <div class="widget-header">
             <small class="title text-muted">Welcome {{user.first_name}}!</small>
             <div>
-              <a href="{% url 'dashboard' %}">Dashboard</a> <span class="dark-transp"> | </span>
+              <a href="{% url 'dashboard' %}">My Account</a> <span class="dark-transp"> | </span>
               <a href="{% url 'logout' %}"> Logout</a>
             </div>
           </div>
@@ -91,7 +91,46 @@
         </div> <!-- widgets-wrap.// -->
       </div> <!-- col.// -->
 </div> <!-- row.// -->
-  </div> <!-- container.// -->
+<nav class="navbar navbar-main navbar-expand pl-0">
+      <ul class="navbar-nav flex-wrap">
+      	<li class="nav-item">
+           <a class="nav-link" href="{% url 'home' %}">Home</a>
+		</li>
+		
+		<li class="nav-item dropdown">
+			<a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#"> Bestseller's </a>
+			<div class="dropdown-menu dropdown-large">
+				<nav class="row">
+					<div class="col-6">
+						<li class="nav-item">
+          {%for category in links%}
+          <a class="nav-link" href="{{ category.get_url }}">{{ category.category_name }} </a>
+          {% endfor %}
+        </li>
+        	
+					</div>
+					
+					<div class="col-6">
+						<li class="nav-item">
+          {%for category in links%}
+          <a class="nav-link" href="{{ category.get_url }}">{{ category.category_name }} </a>
+          {% endfor %}
+        </li>
+					</div>
+				</nav> <!--  row end .// -->
+			</div> <!--  dropdown-menu dropdown-large end.// -->
+		</li>
+		{%for category in links%}
+        <li class="nav-item">
+          
+          <a class="nav-link" href="{{ category.get_url }}">{{ category.category_name }} </a>
+         
+        </li>
+         {% endfor %}
+      </ul>
+</nav> <!-- navbar-main  .// -->
+
+</div> <!-- container.// -->
 </section> <!-- header-main .// -->
 
 
