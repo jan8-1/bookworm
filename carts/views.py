@@ -3,6 +3,8 @@ from store.models import Product, Variation
 from .models import Cart, CartItem
 from django.core.exceptions import ObjectDoesNotExist
 from django.contrib.auth.decorators import login_required
+# from my_lib.taxcalculation import taxcal
+
 
 # Create your views here.
 from django.http import HttpResponse
@@ -174,6 +176,7 @@ def cart(request, total=0, quantity=0, cart_items=None):
             total += (cart_item.product.price * cart_item.quantity)
             quantity += cart_item.quantity
         tax = (2 * total)/100
+        # tax = taxcal(2,total)
         grand_total = total + tax
     except ObjectDoesNotExist:
         pass #just ignore
@@ -202,6 +205,7 @@ def checkout(request, total=0, quantity=0, cart_items=None):
             total += (cart_item.product.price * cart_item.quantity)
             quantity += cart_item.quantity
         tax = (2 * total)/100
+
         grand_total = total + tax
     except ObjectDoesNotExist:
         pass #just ignore
