@@ -15,7 +15,7 @@ from carts.views import _cart_id
 from carts.models import Cart, CartItem
 import requests
 
-
+# registering User
 def register(request):
     # register_lib(request())
     if request.method == 'POST':
@@ -27,7 +27,7 @@ def register(request):
             email = form.cleaned_data['email']
             password = form.cleaned_data['password']
             username = email.split("@")[0]
-            user = Account.objects.create_user(first_name=first_name, last_name=last_name, email=email, username=username, password=password)
+            user = Account.objects.create_user(first_name=first_name, last_name=last_name, email=email, username=username, password=password)  
             user.phone_number = phone_number
             user.save()
 
@@ -57,13 +57,14 @@ def login(request):
     return render(request, 'accounts/login.html')
 
 
+# user logout function
 @login_required(login_url = 'login')
 def logout(request):
     auth.logout(request)
     messages.success(request, 'You are logged out.')
     return redirect('login')
 
-
+# activate user account
 def activate(request, uidb64, token):
     try:
         uid = urlsafe_base64_decode(uidb64).decode()
@@ -85,12 +86,12 @@ def activate(request, uidb64, token):
 def dashboard(request):
     return render(request, 'accounts/dashboard.html')
 
-
+# forgot password function
 def forgotPassword(request):
     forgotPwd_lib(request)
     return render(request, 'accounts/forgotPassword.html')
 
-
+# reset password validation
 def resetpassword_validate(request, uidb64, token):
     try:
         uid = urlsafe_base64_decode(uidb64).decode()
@@ -106,7 +107,7 @@ def resetpassword_validate(request, uidb64, token):
         messages.error(request, 'This link has been expired!')
         return redirect('login')
 
-
+#  reset the password
 def resetPassword(request):
     resetPwd_lib(request)
     return render(request, 'accounts/resetPassword.html')

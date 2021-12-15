@@ -18,12 +18,12 @@ from carts.views import _cart_id
 from carts.models import Cart, CartItem
 import requests
 
-    
+    # password reset
 def resetPwd_lib(request):
     if request.method == 'POST':
         password = request.POST['password']
         confirm_password = request.POST['confirm_password']
-
+# checking password saving new password
         if password == confirm_password:
             uid = request.session.get('uid')
             user = Account.objects.get(pk=uid)
@@ -38,7 +38,7 @@ def resetPwd_lib(request):
         return render(request, 'accounts/resetPassword.html')
         # exit()
     
-    
+    # forgot password library
 def forgotPwd_lib(request):
     if request.method == 'POST':
         email = request.POST['email']
@@ -65,14 +65,14 @@ def forgotPwd_lib(request):
             return redirect('forgotPassword')
     return render(request, 'accounts/forgotPassword.html')
     
-    
+    # login library 
 def login_lib(request):
     if request.method == 'POST':
         email = request.POST['email']
         password = request.POST['password']
-
+# authentaciating user
         user = auth.authenticate(email=email, password=password)
-
+# if user is present
         if user is not None:
             try:
                 cart = Cart.objects.get(cart_id=_cart_id(request))
@@ -95,9 +95,7 @@ def login_lib(request):
                         ex_var_list.append(list(existing_variation))
                         id.append(item.id)
 
-                    # product_variation = [1, 2, 3, 4, 6]
-                    # ex_var_list = [4, 6, 3, 5]
-
+                #  checking for variation of product and assigning them to user
                     for pr in product_variation:
                         if pr in ex_var_list:
                             index = ex_var_list.index(pr)
@@ -113,6 +111,7 @@ def login_lib(request):
                                 item.save()
             except:
                 pass
+            
             auth.login(request, user)
             messages.success(request, 'You are now logged in.')
             url = request.META.get('HTTP_REFERER')

@@ -1,3 +1,4 @@
+# calculating tax
 def taxcal(rate,total):
     num = (rate*total)/100
     return num

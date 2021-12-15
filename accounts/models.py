@@ -23,6 +23,8 @@ class MyAccountManager(BaseUserManager):
         user.save(using=self._db)
         return user
 
+
+#  creating superuser for the account
     def create_superuser(self, first_name, last_name, email, username, password):
         user = self.create_user(
             email = self.normalize_email(email),

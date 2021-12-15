@@ -11,18 +11,16 @@ https://docs.djangoproject.com/en/3.1/ref/settings/
 """
 import os
 from pathlib import Path
-# export LD_LIBRARY_PATH=/usr/local/lib
-# Build paths inside the project like this: BASE_DIR / 'subdir'.
+
 BASE_DIR = Path(__file__).resolve(strict=True).parent.parent
 
 
-# Quick-start development settings - unsuitable for production
-# See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
 
-# SECURITY WARNING: keep the secret key used in production secret!
+
+
 SECRET_KEY = '52$5ujr925j_8)+c4+yhwik_+vq6e13#fxi5**_$rv80pn3(sf'
 
-# SECURITY WARNING: don't run with debug turned on in production!
+
 DEBUG = True
 
 ALLOWED_HOSTS = ['greatkart-course-env.eba-ptvtpukz.us-east-1.elasticbeanstalk.com','*']
@@ -80,10 +78,9 @@ WSGI_APPLICATION = 'greatkart.wsgi.application'
 AUTH_USER_MODEL = 'accounts.Account'
 
 
-# Database
-# https://docs.djangoproject.com/en/3.1/ref/settings/#databases
 
 
+# Database connection
 if 'RDS_DB_NAME' in os.environ:
     DATABASES = {
         'default': {
@@ -198,7 +195,7 @@ MESSAGE_TAGS = {
     messages.ERROR: 'danger',
 }
 
-
+# configration for email 
 # SMTP configuration
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
